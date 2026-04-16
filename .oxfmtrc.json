@@ -1,0 +1,10 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "printWidth": 100,
+  "singleQuote": true,
+  "trailingComma": "es5",
+  "sortImports": {
+    "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "style", "unknown"],
+    "newlinesBetween": true
+  }
+}
