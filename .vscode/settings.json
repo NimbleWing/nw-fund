@@ -1,0 +1,53 @@
+{
+  "files.eol": "\n",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "oxc.enable": true,
+  "rust-analyzer.check.command": "clippy",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "oxc.oxc-vscode",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "never"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode",
+    "editor.formatOnSave": true
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode",
+    "editor.formatOnSave": true
+  },
+  "[rust]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "rust-lang.rust-analyzer"
+  },
+  "cSpell.words": [
+    "appender",
+    "Avenir",
+    "cdylib",
+    "chrono",
+    "clippy",
+    "Eastmoney",
+    "grayscale",
+    "heroui",
+    "icns",
+    "localtime",
+    "nimblewing",
+    "oxfmt",
+    "oxlint",
+    "reqwest",
+    "rgba",
+    "rlib",
+    "serde",
+    "sqlx",
+    "staticlib",
+    "tauri",
+    "thiserror",
+    "vite",
+    "watchlist"
+  ]
+}
