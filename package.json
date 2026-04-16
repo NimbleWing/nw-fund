@@ -32,9 +32,17 @@
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "^6.0.1",
     "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
     "oxfmt": "^0.45.0",
     "oxlint": "^1.60.0",
     "typescript": "^6.0.0",
     "vite": "^8.0.8"
+  },
+  "lint-staged": {
+    "*.rs": "cargo fmt --manifest-path src-tauri/Cargo.toml -- --check",
+    "*.{ts,tsx}": [
+      "oxlint --fix",
+      "oxfmt --write"
+    ]
   }
 }
