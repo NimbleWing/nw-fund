@@ -10,8 +10,13 @@
     "tauri": "tauri",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
+    "lint:rust": "cargo clippy --manifest-path src-tauri/Cargo.toml -- -D warnings",
+    "lint:all": "pnpm lint && pnpm lint:rust",
     "format": "oxfmt --write .",
     "format:check": "oxfmt --check .",
+    "format:rust": "cargo fmt --manifest-path src-tauri/Cargo.toml",
+    "format:rust:check": "cargo fmt --manifest-path src-tauri/Cargo.toml -- --check",
+    "format:all": "pnpm format && pnpm format:rust",
     "prepare": "husky"
   },
   "dependencies": {
