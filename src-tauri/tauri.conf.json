@@ -12,9 +12,14 @@
   "app": {
     "windows": [
       {
+        "label": "main",
         "title": "灵翼基金管理系统",
         "width": 1280,
-        "height": 720
+        "height": 720,
+        "minWidth": 800,
+        "minHeight": 600,
+        "decorations": false,
+        "center": true
       }
     ],
     "security": {
