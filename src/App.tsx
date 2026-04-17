@@ -1,5 +1,8 @@
+import { RouterProvider } from 'react-router';
+
+import { router } from './router';
 function App() {
-  return <main>灵翼基金管理系统</main>;
+  return <RouterProvider router={router} />;
 }
 
 export default App;
