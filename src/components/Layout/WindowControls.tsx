@@ -1,4 +1,4 @@
-import { Button, Tooltip } from '@heroui/react';
+import { Avatar, Button, Tooltip } from '@heroui/react';
 import { getCurrentWindow } from '@tauri-apps/api/window';
 import { MinusIcon, XIcon, ChevronsDownUpIcon, ChevronsUpDownIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
@@ -16,6 +16,11 @@ export const WindowControls = () => {
   }, [currentWindow]);
   return (
     <>
+      <Avatar className="rounded-lg bg-transparent w-[24px] h-[24px] ml-2">
+        <Avatar.Image src="/logo.png" alt="App Logo" />
+      </Avatar>
+      <div className="ml-2">灵翼基金管理</div>
+      <div className="ml-auto"></div>
       <Tooltip>
         <Tooltip.Trigger>
           <Button
