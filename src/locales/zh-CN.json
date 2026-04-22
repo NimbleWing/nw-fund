@@ -1,0 +1,9 @@
+{
+  "component": {
+    "tray": {
+      "label": {
+        "exit": "退出应用"
+      }
+    }
+  }
+}

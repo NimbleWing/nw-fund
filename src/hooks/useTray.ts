@@ -2,9 +2,11 @@ import { Menu, MenuItem } from '@tauri-apps/api/menu';
 import { resolveResource } from '@tauri-apps/api/path';
 import { TrayIcon, TrayIconOptions } from '@tauri-apps/api/tray';
 import { exit } from '@tauri-apps/plugin-process';
+import { useTranslation } from 'react-i18next';
 
 const TRAY_ID = 'app-tray';
 export const useTray = () => {
+  const { t } = useTranslation();
   // 通过 id 获取托盘图标
   const getTrayById = () => {
     return TrayIcon.getById(TRAY_ID);
@@ -39,7 +41,7 @@ export const useTray = () => {
       }),
       MenuItem.new({
         action: () => exit(0),
-        text: '退出应用',
+        text: t('component.tray.label.exit'),
       }),
     ]);
     return Menu.new({

@@ -49,5 +49,9 @@
     "thiserror",
     "vite",
     "watchlist"
-  ]
+  ],
+  "i18n-ally.localesPaths": ["src/locales"],
+  "i18n-ally.displayLanguage": "zh-CN",
+  "i18n-ally.sourceLanguage": "zh-CN",
+  "i18n-ally.keystyle": "nested",
 }
