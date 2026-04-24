@@ -2,7 +2,42 @@
   "component": {
     "tray": {
       "label": {
-        "exit": "退出应用"
+        "exit": "退出应用",
+        "check_update": "检查更新"
+      }
+    },
+    "app_update": {
+      "button": {
+        "cancel_update": "以后再说",
+        "confirm_update": "立即更新"
+      },
+      "label": {
+        "new_version_title": "发现新版本🥳",
+        "release_version": "更新版本",
+        "release_time": "更新时间",
+        "release_notes": "更新日志"
+      },
+      "hints": {
+        "checking_update": "正在检查更新...",
+        "latest_version": "当前已是最新版本🎉"
+      }
+    }
+  },
+  "preference": {
+    "menu": {
+      "title": {
+        "about": "关于"
+      }
+    },
+    "about": {
+      "about_software": {
+        "title": "关于软件",
+        "button": {
+          "check_update": "检查更新"
+        },
+        "label": {
+          "version": "版本"
+        }
       }
     }
   }

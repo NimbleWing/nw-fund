@@ -20,6 +20,17 @@
         "minHeight": 600,
         "decorations": false,
         "center": true
+      },
+      {
+        "label": "preference",
+        "title": "偏好设置",
+        "url": "/preference",
+        "width": 1280,
+        "height": 720,
+        "minWidth": 800,
+        "minHeight": 600,
+        "decorations": false,
+        "center": true
       }
     ],
     "security": {
@@ -28,7 +39,8 @@
   },
   "bundle": {
     "active": true,
-    "targets": "all",
+    "createUpdaterArtifacts": true,
+    "targets": ["nsis"],
     "icon": [
       "icons/32x32.png",
       "icons/128x128.png",
@@ -39,5 +51,14 @@
     "resources": [
       "icons/icon.ico"
     ]
+  },
+  "plugins": {
+    "updater": {
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEU0MzJBMURFNjg0NDM1QzMKUldURE5VUm8zcUV5NUF2YW5rOG05OC9iK056TFRXVmw4cGtaV21seGEzalRQQ2RiOU90VnVIZWUK",
+      "endpoints": ["https://github.com/NimbleWing/nw-fund/releases/latest/download/latest.json"],
+      "windows": {
+        "installMode": "passive"
+      }
+    }
   }
 }

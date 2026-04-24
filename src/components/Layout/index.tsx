@@ -1,5 +1,6 @@
 import { useMount } from 'ahooks';
 import { useState } from 'react';
+import { Outlet } from 'react-router';
 
 import { useTray } from '@/hooks/useTray';
 
@@ -28,7 +29,9 @@ export const Layout = () => {
       <div className="flex flex-1 overflow-hidden">
         <Sidebar expanded={sidebarExpanded} onToggle={() => setSidebarExpanded(!sidebarExpanded)} />
 
-        <main className="flex-1 p-6 overflow-auto">{/* 内容区 */}</main>
+        <main className="flex-1 p-6 overflow-auto">
+          {/* 内容区 */} <Outlet />
+        </main>
       </div>
     </div>
   );

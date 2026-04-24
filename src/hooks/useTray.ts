@@ -1,3 +1,4 @@
+import { emit } from '@tauri-apps/api/event';
 import { Menu, MenuItem } from '@tauri-apps/api/menu';
 import { resolveResource } from '@tauri-apps/api/path';
 import { TrayIcon, TrayIconOptions } from '@tauri-apps/api/tray';
@@ -7,6 +8,9 @@ import { useTranslation } from 'react-i18next';
 import { useBaseStore } from '@/stores';
 
 const TRAY_ID = 'app-tray';
+const LISTEN_KEY = {
+  UPDATE_APP: 'update-app',
+};
 export const useTray = () => {
   const { t } = useTranslation();
   // 通过 id 获取托盘图标
@@ -35,6 +39,12 @@ export const useTray = () => {
   // 获取托盘菜单
   const getTrayMenu = async (appName: string, appVersion: string) => {
     const items = await Promise.all([
+      MenuItem.new({
+        action: () => {
+          emit(LISTEN_KEY.UPDATE_APP, true);
+        },
+        text: t('component.tray.label.check_update'),
+      }),
       MenuItem.new({
         enabled: false,
         text: `${appName} v${appVersion}`,

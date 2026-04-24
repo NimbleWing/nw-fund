@@ -26,17 +26,20 @@
     "editor.defaultFormatter": "rust-lang.rust-analyzer"
   },
   "cSpell.words": [
+    "ahooks",
     "appender",
     "Avenir",
     "cdylib",
     "chrono",
     "clippy",
+    "Dismissable",
     "Eastmoney",
     "grayscale",
     "heroui",
     "icns",
     "localtime",
     "nimblewing",
+    "nsis",
     "oxfmt",
     "oxlint",
     "reqwest",
@@ -47,6 +50,7 @@
     "staticlib",
     "tauri",
     "thiserror",
+    "unlisten",
     "vite",
     "watchlist"
   ],

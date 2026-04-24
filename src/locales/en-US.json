@@ -2,7 +2,42 @@
   "component": {
     "tray": {
       "label": {
-        "exit": "Exit"
+        "exit": "Exit",
+        "check_update": "Check Update"
+      }
+    },
+    "app_update": {
+      "button": {
+        "cancel_update": "Postpone",
+        "confirm_update": "Update Now"
+      },
+      "label": {
+        "new_version_title": "New Version Available 🥳",
+        "release_version": "Release Version",
+        "release_time": "Release Time",
+        "release_notes": "Release Notes"
+      },
+      "hints": {
+        "checking_update": "Checking for updates...",
+        "latest_version": "You are using the latest version 🎉"
+      }
+    }
+  },
+  "preference": {
+    "menu": {
+      "title": {
+        "about": "About"
+      }
+    },
+    "about": {
+      "about_software": {
+        "title": "About Software",
+        "button": {
+          "check_update": "Check Update"
+        },
+        "label": {
+          "version": "Version"
+        }
       }
     }
   }

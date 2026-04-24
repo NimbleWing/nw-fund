@@ -1,3 +1,4 @@
+import { ToastProvider } from '@heroui/react';
 import { useBoolean, useMount } from 'ahooks';
 import { RouterProvider } from 'react-router';
 
@@ -11,7 +12,13 @@ function App() {
     await useBaseStore.getState().init();
     setTrue();
   });
-  return ready && <RouterProvider router={router} />;
+
+  return (
+    <>
+      {ready && <RouterProvider router={router} />}
+      <ToastProvider placement="top" />
+    </>
+  );
 }
 
 export default App;
