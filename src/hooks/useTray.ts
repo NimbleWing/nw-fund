@@ -5,12 +5,11 @@ import { TrayIcon, TrayIconOptions } from '@tauri-apps/api/tray';
 import { exit } from '@tauri-apps/plugin-process';
 import { useTranslation } from 'react-i18next';
 
+import { LISTEN_KEY } from '@/constants';
 import { useBaseStore } from '@/stores';
 
 const TRAY_ID = 'app-tray';
-const LISTEN_KEY = {
-  UPDATE_APP: 'update-app',
-};
+
 export const useTray = () => {
   const { t } = useTranslation();
   // 通过 id 获取托盘图标

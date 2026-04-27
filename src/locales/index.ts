@@ -1,23 +1,21 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
+import { LANGUAGE } from '@/constants';
+
 import enUS from './en-US.json';
 import zhCN from './zh-CN.json';
-const LANGUAGES = {
-  ZH_CN: 'zh-CN',
-  EN_US: 'en-US',
-};
 
 i18n.use(initReactI18next).init({
   resources: {
-    [LANGUAGES.ZH_CN]: {
+    [LANGUAGE.ZH_CN]: {
       translation: zhCN,
     },
-    [LANGUAGES.EN_US]: {
+    [LANGUAGE.EN_US]: {
       translation: enUS,
     },
   },
-  lng: LANGUAGES.ZH_CN,
+  lng: LANGUAGE.ZH_CN,
   debug: true,
 });
 

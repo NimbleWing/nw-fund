@@ -5,6 +5,7 @@ import { useCreation, useReactive } from 'ahooks';
 import { useTranslation } from 'react-i18next';
 import Markdown from 'react-markdown';
 
+import { LISTEN_KEY } from '@/constants';
 import { useTauriListen } from '@/hooks/useTauriListen';
 import { dayjs, formatDate } from '@/utils/dayjs';
 
@@ -20,7 +21,7 @@ export const UpdateApp = () => {
   let checkingId: string;
   const state = useReactive<State>({ open: false, download: 0 });
   // 监听更新时间
-  useTauriListen<boolean>('update-app', () => {
+  useTauriListen<boolean>(LISTEN_KEY.UPDATE_APP, () => {
     checkUpdate(true);
     checkingId = toast.info(t('component.app_update.hints.checking_update'), {
       timeout: 0,
