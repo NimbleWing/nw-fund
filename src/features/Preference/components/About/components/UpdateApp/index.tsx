@@ -9,7 +9,7 @@ import { useTauriListen } from '@/hooks/useTauriListen';
 import { dayjs, formatDate } from '@/utils/dayjs';
 
 interface State {
-  open?: boolean;
+  open: boolean;
   loading?: boolean;
   update?: Update;
   total?: number;
@@ -18,7 +18,7 @@ interface State {
 export const UpdateApp = () => {
   const { t } = useTranslation();
   let checkingId: string;
-  const state = useReactive<State>({ download: 0 });
+  const state = useReactive<State>({ open: false, download: 0 });
   // 监听更新时间
   useTauriListen<boolean>('update-app', () => {
     checkUpdate(true);
