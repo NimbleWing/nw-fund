@@ -71,19 +71,22 @@ export const UpdateApp = () => {
   };
   const handleOk = async () => {
     state.loading = true;
-    await state.update?.downloadAndInstall((progress) => {
-      switch (progress.event) {
-        case 'Started':
-          state.total = progress.data.contentLength;
-          break;
-        case 'Progress':
-          state.download += progress.data.chunkLength;
-          break;
-      }
-    });
+    try {
+      await state.update?.downloadAndInstall((progress) => {
+        switch (progress.event) {
+          case 'Started':
+            state.total = progress.data.contentLength;
+            break;
+          case 'Progress':
+            state.download += progress.data.chunkLength;
+            break;
+        }
+      });
+      await relaunch();
+    } catch (error) {
+      toast(String(error));
+    }
     state.loading = false;
-
-    await relaunch();
   };
   const handleOpenChange = (isOpen: boolean) => {
     state.open = isOpen;
