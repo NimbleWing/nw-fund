@@ -23,3 +23,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+latest.json
+~/.tauri/fund.key
+~/.tauri/fund.key.pub

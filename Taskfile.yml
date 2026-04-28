@@ -23,3 +23,7 @@ tasks:
     desc: Run Android development
     cmds:
       - pnpm tauri android dev
+  build-windows:
+    desc: Build Windows Apps
+    cmds:
+      - pnpm run tauri:build

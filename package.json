@@ -8,6 +8,8 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "tauri": "tauri",
+    "tauri:build": "pnpm tauri build && pnpm generate:json",
+    "generate:json": "cargo run --manifest-path src-tauri/Cargo.toml --bin generate-latest-json",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "lint:rust": "cargo clippy --manifest-path src-tauri/Cargo.toml -- -D warnings",
