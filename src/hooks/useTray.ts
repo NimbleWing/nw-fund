@@ -6,6 +6,7 @@ import { exit } from '@tauri-apps/plugin-process';
 import { useTranslation } from 'react-i18next';
 
 import { LISTEN_KEY } from '@/constants';
+import { showWindow } from '@/plugins/window';
 import { useBaseStore } from '@/stores';
 
 const TRAY_ID = 'app-tray';
@@ -40,6 +41,7 @@ export const useTray = () => {
     const items = await Promise.all([
       MenuItem.new({
         action: () => {
+          showWindow();
           emit(LISTEN_KEY.UPDATE_APP, true);
         },
         text: t('component.tray.label.check_update'),

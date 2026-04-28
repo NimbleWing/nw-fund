@@ -32,6 +32,7 @@
     "cdylib",
     "chrono",
     "clippy",
+    "commitlint",
     "Dismissable",
     "Eastmoney",
     "grayscale",
@@ -51,6 +52,7 @@
     "tauri",
     "thiserror",
     "unlisten",
+    "unminimize",
     "vite",
     "watchlist"
   ],

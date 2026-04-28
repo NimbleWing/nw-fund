@@ -20,6 +20,7 @@ export default defineConfig(async () => ({
       '@features': resolve(__dirname, 'src/features'),
       '@hooks': resolve(__dirname, 'src/hooks'),
       '@utils': resolve(__dirname, 'src/utils'),
+      '@plugins': resolve(__dirname, 'src/plugins'),
       '@types': resolve(__dirname, 'src/types'),
     },
   },
