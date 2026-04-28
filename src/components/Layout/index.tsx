@@ -1,19 +1,11 @@
-import { useMount } from 'ahooks';
 import { useState } from 'react';
 import { Outlet } from 'react-router';
-
-import { useTray } from '@/hooks/useTray';
 
 import { Sidebar } from './Sidebar';
 import { WindowControls } from './WindowControls';
 
 export const Layout = () => {
   const [sidebarExpanded, setSidebarExpanded] = useState(true);
-  const { createTray } = useTray();
-
-  useMount(async () => {
-    await createTray();
-  });
 
   return (
     <div className="flex flex-col h-screen">
