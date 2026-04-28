@@ -42,7 +42,7 @@ export const UpdateApp = () => {
   const checkUpdate = async (showMessage = false) => {
     try {
       const update = await check();
-
+      toast.close(checkingId);
       if (update) {
         const { version, currentVersion, body = '', date } = update;
         Object.assign(update, {
@@ -52,7 +52,6 @@ export const UpdateApp = () => {
           version: `v${version}`,
         });
         Object.assign(state, { open: true, update });
-        toast.close(checkingId);
       } else if (showMessage) {
         toast.info(t('component.app_update.hints.latest_version'));
       }
