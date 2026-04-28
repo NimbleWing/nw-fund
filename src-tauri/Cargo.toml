@@ -4,6 +4,7 @@ version = "0.0.1"
 description = "Fund management application"
 authors = ["NimbleWing"]
 edition = "2024"
+default-run = "nw-fund"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
