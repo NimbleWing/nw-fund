@@ -42,7 +42,7 @@ export const UpdateApp = () => {
   const checkUpdate = async (showMessage = false) => {
     try {
       const update = await check();
-      toast.close(checkingId);
+
       if (update) {
         const { version, currentVersion, body = '', date } = update;
         Object.assign(update, {
@@ -58,7 +58,9 @@ export const UpdateApp = () => {
     } catch (error) {
       console.log(error);
 
-      toast(String(error));
+      toast.danger(String(error));
+    } finally {
+      toast.close(checkingId);
     }
   };
   // 替换更新日志里的内容
