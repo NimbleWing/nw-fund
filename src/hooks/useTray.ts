@@ -27,6 +27,11 @@ export const useTray = () => {
     const iconPath = 'icons/icon.ico';
     const icon = await resolveResource(iconPath);
     const options: TrayIconOptions = {
+      action: (event) => {
+        if (event.type === 'Click' && event.button === 'Left') {
+          showWindow('main');
+        }
+      },
       icon,
       iconAsTemplate: true,
       id: TRAY_ID,
