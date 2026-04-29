@@ -27,3 +27,7 @@ tasks:
     desc: Build Windows Apps
     cmds:
       - pnpm run tauri:build
+  release:
+    desc: Release version
+    cmds:
+      - pnpm run release
