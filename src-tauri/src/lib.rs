@@ -1,3 +1,10 @@
+use std::sync::Arc;
+
+use anyhow::Result;
+
+use serde::Serialize;
+use tauri::Manager;
+use tracing::{error, info};
 use tracing_appender::rolling;
 use tracing_subscriber::{
   EnvFilter,
@@ -5,17 +12,30 @@ use tracing_subscriber::{
   layer::SubscriberExt,
   util::SubscriberInitExt,
 };
-
 mod commands;
+mod features;
+mod infra;
+use infra::tauri::cmds::*;
+
+use crate::{
+  features::holiday,
+  infra::sqlite::pool::{DbPool, init_db_pool},
+};
+mod services;
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
-pub fn run() {
+pub async fn run() -> Result<()> {
   init_logging();
   tauri::Builder::default()
     .plugin(tauri_plugin_updater::Builder::new().build())
     .plugin(tauri_plugin_process::init())
-    .invoke_handler(tauri::generate_handler![commands::window::show_window,])
+    .setup(|app| setup(app.handle().clone()))
+    .invoke_handler(tauri::generate_handler![
+      cmd_holiday::holiday_list_by_year,
+      commands::window::show_window,
+    ])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
+  Ok(())
 }
 // 初始化日志系统
 fn init_logging() {
@@ -47,4 +67,49 @@ fn init_logging() {
     )
     .init();
   tracing::info!("应用启动中...");
+}
+
+// 初始化
+fn setup(app_handle: tauri::AppHandle) -> Result<(), Box<dyn std::error::Error>> {
+  tauri::async_runtime::spawn(async move {
+    info!("初始化数据库...");
+    match init_db_pool(&app_handle).await {
+      Ok(pool) => {
+        let state = Arc::new(AppService::new(pool));
+        app_handle.manage(state);
+        info!("数据库初始化完成!");
+      }
+      Err(e) => {
+        error!(error = %e, "数据库初始化失败");
+      }
+    }
+  });
+
+  Ok(())
+}
+
+#[derive(Debug, Clone, Serialize)]
+pub struct Error {
+  message: String,
+}
+
+impl From<anyhow::Error> for Error {
+  fn from(err: anyhow::Error) -> Self {
+    print!("{}", err);
+    Self {
+      message: err.to_string(),
+    }
+  }
+}
+
+pub struct AppService {
+  pub holiday: Arc<holiday::HolidayService>,
+}
+
+impl AppService {
+  pub fn new(pool: DbPool) -> Self {
+    Self {
+      holiday: Arc::new(holiday::HolidayService::new(pool.clone())),
+    }
+  }
 }

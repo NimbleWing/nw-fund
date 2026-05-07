@@ -26,12 +26,22 @@ serde_json = "1.0.149"
 [target.'cfg(not(any(target_os = "android", target_os = "ios")))'.dependencies]
 tauri-plugin-updater = "2"
 tauri-latest-json = "0.4"
-
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.149"
+tokio = { version = "1.52.1", features = ["macros", "rt-multi-thread"] }
 # Logging
 tracing = "0.1.44"
 tracing-subscriber = { version = "0.3.23", features = ["env-filter", "json", "chrono"] }
 tracing-appender = "0.2.5"
 
+# Database
+sqlx = { version = "0.8.6", features = ["sqlite", "runtime-tokio", "chrono"] }
+
+# Error handling
+anyhow = "1.0.102"
+
+# HTTP client
+reqwest = { version = "0.13.3", features = ["json", "blocking"] }
 [[bin]]
 name = "generate-latest-json"
 path = "src/bin/generate_latest_json.rs"
