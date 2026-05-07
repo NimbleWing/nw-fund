@@ -1,6 +1,6 @@
 {
   "db_name": "SQLite",
-  "query": "SELECT id, name, `date` , year FROM holiday WHERE year = ? ORDER BY `date` ASC",
+  "query": "SELECT id, name, date , year FROM holiday WHERE year = ? ORDER BY date ASC",
   "describe": {
     "columns": [
       {
@@ -34,5 +34,5 @@
       false
     ]
   },
-  "hash": "2c57dbe254089bdaf1bec5312669651f872a3b4482073ae5439c1f23157ad4ac"
+  "hash": "2c6850b6fb0bd6d038c5674e7ca7cf7f39e11301d6f0945fc0b744eb4a230b12"
 }
