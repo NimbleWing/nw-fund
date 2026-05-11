@@ -20,6 +20,7 @@ tauri-build = { version = "2.5.6", features = [] }
 
 [dependencies]
 tauri = { version = "2", features = ["tray-icon", "image-ico"] }
+tauri-plugin-fs = "2"
 tauri-plugin-process = "2"
 serde = { version = "1.0.228", features = ["derive"] }
 serde_json = "1.0.149"
@@ -42,6 +43,8 @@ anyhow = "1.0.102"
 
 # HTTP client
 reqwest = { version = "0.13.3", features = ["json", "blocking"] }
+
+
 [[bin]]
 name = "generate-latest-json"
 path = "src/bin/generate_latest_json.rs"

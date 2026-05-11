@@ -27,6 +27,7 @@ pub async fn run() -> Result<()> {
   init_logging();
   tauri::Builder::default()
     .plugin(tauri_plugin_updater::Builder::new().build())
+    .plugin(tauri_plugin_fs::init())
     .plugin(tauri_plugin_process::init())
     .setup(|app| setup(app.handle().clone()))
     .invoke_handler(tauri::generate_handler![

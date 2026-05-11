@@ -1,22 +1,28 @@
 import { Tabs } from '@heroui/react';
-import { useMount } from 'ahooks';
-import { useCreation } from 'ahooks';
+import { useCreation, useMount } from 'ahooks';
 import { InfoIcon } from 'lucide-react';
-// import { useState } from 'react';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { useTray } from '@/hooks/useTray';
+import { useBaseStore } from '@/stores';
 
 import { About } from './components/About';
 import { UpdateApp } from './components/About/components/UpdateApp';
 
 export const Preference = () => {
   const { t } = useTranslation();
-  const { createTray } = useTray();
+  const { createTray, updateTrayMenu } = useTray();
+  const marketStatus = useBaseStore((state) => state.marketStatus);
 
   useMount(async () => {
-    await createTray();
+    await createTray(marketStatus);
   });
+
+  useEffect(() => {
+    updateTrayMenu(marketStatus);
+  }, [marketStatus, updateTrayMenu]);
+
   const menuItems = useCreation(() => {
     return [
       {

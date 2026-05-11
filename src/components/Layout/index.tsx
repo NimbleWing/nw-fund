@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router';
 
+import { useMarketStatus } from '@/hooks/useMarketStatus';
+
 import { Sidebar } from './Sidebar';
 import { WindowControls } from './WindowControls';
 
 export const Layout = () => {
   const [sidebarExpanded, setSidebarExpanded] = useState(true);
+  useMarketStatus();
 
   return (
     <div className="flex flex-col h-screen">
