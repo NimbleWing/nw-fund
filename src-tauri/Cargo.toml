@@ -44,6 +44,9 @@ anyhow = "1.0.102"
 # HTTP client
 reqwest = { version = "0.13.3", features = ["json", "blocking"] }
 
+# Date and time
+chrono = "0.4"
+
 
 [[bin]]
 name = "generate-latest-json"

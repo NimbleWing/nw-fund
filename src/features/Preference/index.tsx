@@ -1,9 +1,13 @@
 import { Tabs } from '@heroui/react';
+import { invoke } from '@tauri-apps/api/core';
 import { useCreation, useMount } from 'ahooks';
 import { InfoIcon } from 'lucide-react';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
+import { LISTEN_KEY } from '@/constants';
+import type { MarketStatus as MarketStatusType } from '@/constants/market';
+import { useTauriListen } from '@/hooks/useTauriListen';
 import { useTray } from '@/hooks/useTray';
 import { useBaseStore } from '@/stores';
 
@@ -15,8 +19,19 @@ export const Preference = () => {
   const { createTray, updateTrayMenu } = useTray();
   const marketStatus = useBaseStore((state) => state.marketStatus);
 
+  useTauriListen<MarketStatusType>(LISTEN_KEY.MARKET_STATUS_CHANGED, (event) => {
+    useBaseStore.getState().setMarketStatus(event.payload);
+  });
+
   useMount(async () => {
-    await createTray(marketStatus);
+    try {
+      const status = await invoke<MarketStatusType>('get_market_status');
+      useBaseStore.getState().setMarketStatus(status);
+      await createTray(status);
+    } catch (error) {
+      console.error('Failed to get market status:', error);
+      await createTray(marketStatus);
+    }
   });
 
   useEffect(() => {

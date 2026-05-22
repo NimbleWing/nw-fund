@@ -3,13 +3,12 @@ import { getCurrentWindow } from '@tauri-apps/api/window';
 import { MinusIcon, XIcon, ChevronsDownUpIcon, ChevronsUpDownIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
-import { useMarketStatus } from '@/hooks/useMarketStatus';
 import { useBaseStore } from '@/stores';
 export const WindowControls = () => {
   const currentWindow = getCurrentWindow();
   const [isMaximized, setIsMaximized] = useState(false);
   const appName = useBaseStore((state) => state.appName);
-  const { marketStatus } = useMarketStatus();
+  const marketStatus = useBaseStore((state) => state.marketStatus);
   useEffect(() => {
     const unlisten = currentWindow.onResized(() => {
       currentWindow.isMaximized().then(setIsMaximized);
