@@ -60,4 +60,16 @@
   "i18n-ally.displayLanguage": "zh-CN",
   "i18n-ally.sourceLanguage": "zh-CN",
   "i18n-ally.keystyle": "nested",
+  "json.schemaDownload.trustedDomains": {
+    // 保留默认信任域（重要！）
+    "https://schemastore.azurewebsites.net/": true,
+    "https://raw.githubusercontent.com/": true,
+    "https://www.schemastore.org/": true,
+    "https://json.schemastore.org/": true,
+    "https://json-schema.org/": true,
+
+    // 添加 opencode.ai
+    "https://opencode.ai/": true,
+    "https://models.dev/": true
+  }
 }
