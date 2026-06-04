@@ -1,5 +1,6 @@
 import { Button } from '@heroui/react';
-import { PanelLeftClose, PanelLeftOpen } from 'lucide-react';
+import { PanelLeftClose, PanelLeftOpen, Search } from 'lucide-react';
+import { NavLink } from 'react-router';
 
 interface SidebarProps {
   expanded: boolean;
@@ -13,7 +14,20 @@ export const Sidebar = ({ expanded, onToggle }: SidebarProps) => {
         expanded ? 'w-[200px]' : 'w-[60px]'
       }`}
     >
-      <div className="flex-1 flex items-center justify-center">{/* 占位区 */}</div>
+      <nav className="flex-1 flex flex-col gap-1 p-2">
+        <NavLink
+          to="/"
+          end
+          className={({ isActive }) =>
+            `flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ${
+              isActive ? 'bg-primary-100 text-primary' : 'text-default-500 hover:bg-default-100'
+            } ${expanded ? '' : 'justify-center px-0'}`
+          }
+        >
+          <Search className="size-5 shrink-0" />
+          {expanded && <span className="text-sm">基金查询</span>}
+        </NavLink>
+      </nav>
       <Button variant="ghost" isIconOnly className="m-2" onPress={onToggle}>
         {expanded ? <PanelLeftClose /> : <PanelLeftOpen />}
       </Button>

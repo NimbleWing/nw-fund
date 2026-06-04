@@ -19,7 +19,7 @@ mod infra;
 use infra::tauri::cmds::*;
 
 use crate::{
-  features::{holiday, market_status},
+  features::{fund, holiday, market_status},
   infra::sqlite::pool::{DbPool, init_db_pool},
 };
 mod services;
@@ -34,6 +34,10 @@ pub async fn run() -> Result<()> {
     .plugin(tauri_plugin_process::init())
     .setup(|app| setup(app.handle().clone()))
     .invoke_handler(tauri::generate_handler![
+      cmd_fund::fund_search,
+      cmd_fund::fund_nav_history,
+      cmd_fund::fund_detail,
+      cmd_fund::fund_holdings,
       cmd_holiday::holiday_list_by_year,
       cmd_market_status::get_market_status,
       commands::window::show_window,
@@ -131,6 +135,7 @@ impl From<anyhow::Error> for Error {
 }
 
 pub struct AppService {
+  pub fund: Arc<fund::FundDataService>,
   pub holiday: Arc<holiday::HolidayService>,
   pub market_status: Arc<market_status::MarketStatusService>,
 }
@@ -139,6 +144,9 @@ impl AppService {
   pub fn new(pool: DbPool) -> Self {
     let holiday = Arc::new(holiday::HolidayService::new(pool.clone()));
     Self {
+      fund: Arc::new(fund::FundDataService::new(vec![Box::new(
+        crate::services::fund::providers::eastmoney::EastMoneyProvider::new(),
+      )])),
       market_status: Arc::new(market_status::MarketStatusService::new(holiday.clone())),
       holiday,
     }

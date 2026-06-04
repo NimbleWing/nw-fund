@@ -23,6 +23,39 @@
       }
     }
   },
+  "fund": {
+    "query": {
+      "search_placeholder": "输入基金代码或名称搜索",
+      "search": "搜索",
+      "no_results": "未找到匹配的基金",
+      "results_count": "共找到 {{count}} 只基金"
+    },
+    "detail": {
+      "title": "基本信息",
+      "code": "基金代码",
+      "name": "基金名称",
+      "type": "基金类型",
+      "nav": "单位净值",
+      "acc_nav": "累计净值",
+      "estimated_nav": "估算净值",
+      "day_change": "日涨跌幅"
+    },
+    "holdings": {
+      "title": "持仓信息",
+      "code": "代码",
+      "name": "名称",
+      "percent": "占净值比例",
+      "empty": "暂无持仓数据"
+    },
+    "nav_history": {
+      "title": "历史净值",
+      "date": "日期",
+      "nav": "单位净值",
+      "acc_nav": "累计净值",
+      "estimated_nav": "估算净值",
+      "empty": "暂无净值数据"
+    }
+  },
   "preference": {
     "menu": {
       "title": {

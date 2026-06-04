@@ -23,6 +23,39 @@
       }
     }
   },
+  "fund": {
+    "query": {
+      "search_placeholder": "Search by fund code or name",
+      "search": "Search",
+      "no_results": "No matching funds found",
+      "results_count": "{{count}} fund(s) found"
+    },
+    "detail": {
+      "title": "Basic Info",
+      "code": "Code",
+      "name": "Name",
+      "type": "Type",
+      "nav": "NAV",
+      "acc_nav": "Accum. NAV",
+      "estimated_nav": "Est. NAV",
+      "day_change": "Daily Change"
+    },
+    "holdings": {
+      "title": "Holdings",
+      "code": "Code",
+      "name": "Name",
+      "percent": "Ratio",
+      "empty": "No holdings data"
+    },
+    "nav_history": {
+      "title": "NAV History",
+      "date": "Date",
+      "nav": "NAV",
+      "acc_nav": "Accum. NAV",
+      "estimated_nav": "Est. NAV",
+      "empty": "No NAV history"
+    }
+  },
   "preference": {
     "menu": {
       "title": {
